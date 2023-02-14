@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ProjectController extends Controller
+{
+    public function Index(){
+        $projects = [
+            [
+                'id' => 0,
+                'title' => 'Node.js Yearbook',
+                'description' => 'Details coming soon...',
+                'is_published' => false
+            ],
+            [
+                'id' => 1,
+                'title' => 'React Movie App',
+                'description' => '...',
+                'is_published' => false
+            ],
+            
+            [
+                'id' => 3,
+                'title' => 'Larvel Portfolio Back-End',
+                'description' => 'In progress...',
+                'is_published' => false
+            ],
+        ];
+        return view('projects.index')
+            ->with('projects', $projects);
+    }
+    public function show($project)
+    {
+        return view('projects.project', ['project' => $project]);
+    }
+}
