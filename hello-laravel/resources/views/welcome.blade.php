@@ -20,24 +20,16 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-    <header class="px-6 py-8">
-    <nav class="md:flex md:justify-between md:items-center">
-        <div><a href="/" class="text-s font-bold uppercase">Home</a></div>
-        <div class="mt-8 md:mt-0">
-            <a href="/projects" class="ml-3 text-xs font-bold uppercase">Projects</a>
-            <a href="/about" class="ml-3 text-xs font-bold uppercase">About</a>
-        </div>
-    </nav>
-</header>
-    @extends('app')
-    @section('content')
 
+
+<body class="antialiased">
+    <x-header />
     <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0">
-        Welcome!
+        Welcome Home!
     </div>
-    <footer class="text-black bg-transparent">Mason Porter</footer>
-    @endsection
+    <x-footer />
+
+ 
     
     </body>
 </html>

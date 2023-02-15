@@ -1,3 +1,0 @@
-<footer>
-    Mason Porter
-</footer>

@@ -21,9 +21,8 @@ Route::get('/about', function () {
     return view('about');
 
 });
-/*Route::get('/projects', [ProjectController::class, 'index']);*/
-Route::get('/projects', function (){
-    return view('projects.index');
-});
+Route::get('/projects', [ProjectController::class, 'index']);
+
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
+
 

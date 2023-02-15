@@ -33,6 +33,12 @@ class ProjectController extends Controller
     }
     public function show($project)
     {
+        $project= [
+            'id' => 4,
+            'title' => 'Vue.js Portfolio Front-End',
+            'description' => '...',
+            'is_published' => false
+        ];
         return view('projects.project', ['project' => $project]);
     }
 }
