@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="content">
     <div
-    class="relative flex justify-center min-h-screen  sm:items-center py-4 sm:pt-0">
+    class="relative flex justify-center min-h-screen sm:items-center py-4 sm:pt-0">
     <div class="mt-6">
         <section class="grid grid-cols-1 md:grid-cols-2 gap-2">
             @foreach ($projects as $project)
