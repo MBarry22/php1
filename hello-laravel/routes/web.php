@@ -1,6 +1,9 @@
 <?php
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterUserController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,5 @@ Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 Route::get('/categories/{category:slug}', [ProjectController::class, 'listByCategory']);
 
+Route::get('/register', [RegisterUserController::class, 'create']);
+Route::post('/register', [RegisterUserController::class, 'store']);

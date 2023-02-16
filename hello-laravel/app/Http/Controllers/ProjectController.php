@@ -10,7 +10,8 @@ class ProjectController extends Controller
     public function Index(){
 
         return view('projects.index')
-            ->with('projects', Project::all());
+            ->with('projects', Project::all())
+            ->with('categoryname',null);
     }
     public function show(Project $project)
     {
@@ -18,7 +19,10 @@ class ProjectController extends Controller
     }
     public function listByCategory(Category $category)
     {
+        
         return view('projects.index')
-        ->with('projects', $category->projects);
+        ->with('projects', $category->projects)
+        ->with('categoryname', $category->name);
+        
     }
 }
