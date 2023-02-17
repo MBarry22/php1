@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterUserController extends Controller
 {
@@ -10,10 +11,17 @@ class RegisterUserController extends Controller
         return view('register_user.create');
     }
     public function store() {
-        request()->validate([
+        $attributes = request()->validate([
             'name' => 'required',
             'email' => ['required','email', 'unique:users,email'],
-            'password' => ['required','min:8', 'confirmed'],
+            'password' => ['required','min:8','confirmed'],
         ]);
+
+        //User::create($attributes);
+        
+        $user = User::create($attributes);
+        auth()->login($user);
+
+        return redirect('/');
     }
 }

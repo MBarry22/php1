@@ -4,6 +4,7 @@
     
     <body class="antialiased " >
         <x-header />
+
         {{$content}}
         <x-footer />
     </body>
