@@ -2,7 +2,7 @@
 
 <div class="p-4  bg-white overflow-hidden shadow sm:rounded-lg w-3/6 ">
     <div class="text-xl font-bold">
-        <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
+        <a href="/projects/{{ $project->slug }}">{{ $project->title }}</a>
         @if ($showImage)
             <img src="{{url('storage/images/php.png')}}" alt="placeholder" class="w-6 h-6" />
         @endif

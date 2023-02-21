@@ -30,7 +30,7 @@ Route::get('/about', function () {
 });
 Route::get('/projects', [ProjectController::class, 'index']);
 
-Route::get('/projects/{project}', [ProjectController::class, 'show']);
+Route::get('/projects/{project:slug}', [ProjectController::class, 'show']);
 Route::get('/categories/{category:slug}', [ProjectController::class, 'listByCategory']);
 
 //Register
@@ -48,8 +48,7 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/projects', [AdminController::class, 'index']);
     //Route::get('/admin/projects', [ProjectController::class, 'index']);
-    Route::get('/admin/projects/{project}', [ProjectController::class, 'show']);
-    //Route::get('/admin/projects/{project:slug}', [ProjectController::class, 'show']);
+    Route::get('/admin/projects/{project:slug}', [ProjectController::class, 'show']);
 });
 
 // fallback route
