@@ -2,7 +2,7 @@
 
 <div class="p-4  bg-white overflow-hidden shadow sm:rounded-lg w-96 ">
     <div class="text-xl font-bold">
-        <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
+        <a href="/projects/{{ $project->slug }}">{{ $project->title }}</a>
     </div>
     
     <div>{!! $project->excerpt!!}</div>
