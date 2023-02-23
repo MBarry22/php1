@@ -47,9 +47,52 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 //Admin
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/projects', [AdminController::class, 'index']);
-    //Route::get('/admin/projects', [ProjectController::class, 'index']);
+
+    // create project routes
+    Route::get('/admin/projects/create', [ProjectController::class, 'create']);
+    Route::post('/admin/projects/create', [ProjectController::class, 'store']);
+
+    // edit project routes
+    Route::get('/admin/projects/{project}/edit', [ProjectController::class, 'edit']);
+    Route::patch('/admin/projects/{project}/edit', [ProjectController::class, 'update']);
+
+    // delete project routes
+    Route::delete('/admin/projects/{project}/delete', [ProjectController::class, 'destroy']);
+    
+    // create user routes
+    Route::get('/admin/users/create', [AdminController::class, 'usercreate']);
+    Route::post('/admin/users/create', [AdminController::class, 'userstore']);
+
+    // edit user routes
+    Route::get('/admin/users/{user}/edit', [AdminController::class, 'edituser']);
+    Route::patch('/admin/users/{user}/edit', [AdminController::class, 'updateuser']);
+
+    // delete user routes
+    Route::delete('/admin/users/{user}/delete', [AdminController::class, 'destroyuser']);
+
+
+    // create Categories routes
+    Route::get('/admin/categories/create', [AdminController::class, 'categorycreate']);
+    Route::post('/admin/categories/create', [AdminController::class, 'categorystore']);
+
+    // edit Categories routes
+    Route::get('/admin/categories/{category}/edit', [AdminController::class, 'editcategory']);
+    Route::patch('/admin/categories/{category}/edit', [AdminController::class, 'updatecategory']);
+
+    // delete Categories routes
+    Route::delete('/admin/categories/{category}/delete', [AdminController::class, 'destroycategory']);
+    
+    
+    
+
     Route::get('/admin/projects/{project:slug}', [ProjectController::class, 'show']);
+
+
+
+
 });
+
+
 
 // fallback route
 Route::fallback(function() {

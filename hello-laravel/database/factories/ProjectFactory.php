@@ -20,6 +20,7 @@ class ProjectFactory extends Factory
         $body = '<p>' . join('</p></p>', $bodyArray ) . '</p>';
         return [
             'title' => fake()->company() . ' ' . fake()->companySuffix(),
+            
             'excerpt' => fake()->catchPhrase(),
             'body' => $body
         ];

@@ -20,7 +20,7 @@
             @endforeach
         </section>
         @if (count($projects))
-                    <div class="text-xs mt-4 w-full text-right">{{ $projects->links() }}</div>
+                    <div class="text-xs mt-4 w-full text-right">{{ $projects}}</div>
             @else
                     <div>Nothing to showcase, yet.</div>
         @endif
