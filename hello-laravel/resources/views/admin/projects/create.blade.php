@@ -2,16 +2,16 @@
     <x-slot name="content">
         
     <div class="flex justify-center items-center h-full">
-     @if ($project)
-        <h1 class="text-center font-bold text-xl mb-3">Edit Project: {{ $project->title }}</h1>
-        <form method="POST" action="/admin/projects/{{ $project->id }}/edit" enctype="multipart/form-data">
-            @method('PATCH')
-    @else
-            <h1 class="text-center font-bold text-xl mb-3">Create Project</h1>
-            <form method="POST" action="/admin/projects/create" enctype="multipart/form-data">
-    @endif
         <div class="w-full max-w-md">
-            <h1 class="text-center font-bold text-xl mb-6">Create Project</h1>
+            @if ($project)
+                <h1 class="text-center font-bold text-xl mb-3">Edit Project: {{ $project->title }}</h1>
+                <form method="POST" action="/admin/projects/{{ $project->id }}/edit" enctype="multipart/form-data">
+                 @method('PATCH')
+            @else
+                <h1 class="text-center font-bold text-xl mb-3">Create Project</h1>
+                <form method="POST" action="/admin/projects/create" enctype="multipart/form-data">
+            @endif
+
             <form method="POST" action="/admin/projects/create" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
@@ -41,7 +41,7 @@
                 
                 <div class="mb-4">
                     <label for="url" class="block mb-2 font-bold text-gray-700">URL</label>
-                    <input type="text" name="url" id="url" value="{{ old('url') ?? $project?->url }}" required
+                    <input type="text" name="url" id="url" value="{{ old('url') ?? $project?->url }}" 
                         class="border border-gray-400 rounded p-2 w-full">
                     @error('url')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -94,6 +94,20 @@
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="mb-4">
+                    <label for="tags" class="block mb-2 font-semibold text-gray-800">Tags:</label>
+                    <select name="tags[]" id="tags" multiple="multiple" class="w-full px-3 py-2 border rounded-lg shadow-sm">
+                        @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}" @if (old('tags') && in_array($tag->id, old('tags'))) selected @elseif ($project && $project->tags) @foreach ($project->tags as $projectTag) @if ($tag->id == $projectTag->id) selected @endif @endforeach @endif>
+                            {{ $tag->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                    @error('tags')
+                        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+
                     <div class="flex justify-center">
                         <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Create</button>
                     </div>

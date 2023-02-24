@@ -15,6 +15,11 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'projects_tags', 'projects_id', 'tags_id');
+    }
+
    /**
      * The attributes that are mass assignable.
      *

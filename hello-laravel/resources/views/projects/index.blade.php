@@ -16,7 +16,7 @@
     <div class="mt-6">
         <section class="grid grid-cols-1 md:grid-cols-1 gap-2">
             @foreach ($projects as $project)
-                    <x-projects.project-card :project="$project" :showImage="true" :showBannerImage="false" />
+                    <x-projects.project-card :project="$project" :showImage="true" :showBannerImage="false" :showExcerpt="true" />
             @endforeach
         </section>
         @if (count($projects))

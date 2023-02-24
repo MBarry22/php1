@@ -7,7 +7,7 @@
     <div class="absolute top-4 left-20">
     <a href="/projects">← Back to Projects </a>
     </div>
-    <x-projects.project-card :project="$project" :showBody="true"/>
+    <x-projects.project-card :project="$project" :showBody="true" />
 </div>
     </x-slot>
 </x-layout>

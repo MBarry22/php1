@@ -66,6 +66,28 @@
                     </div>
                     @endforeach
                 </section>
+
+                <section class="bg-white shadow rounded-lg p-4">
+                    <div class="text-2xl text-center font-bold mb-4">Tags</div>
+                    <div class="flex justify-end mb-4">
+                        <a href="/admin/tags/create" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full text-center">Create Tags</a>
+                    </div>
+                    <hr class="my-4">
+                    @foreach ($tags as $tag)
+                    <div class="flex items-center justify-between mb-2">
+                        <a href="/admin/tags/{{ $tag->id }}">{{ $tag->name }}</a>
+                        <div>
+                            <a href="/admin/tags/{{ $tag->id }}/edit" class="text-gray-500 hover:text-gray-700">Edit</a>
+                            <span class="mx-1">|</span>
+                            <form method="POST" action="/admin/tags/{{$tag->id}}/delete" class="inline">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="text-red-600">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    @endforeach
+                </section>
             </div>
         </div>
     </x-slot>

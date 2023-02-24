@@ -6,15 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use App\Models\Tag;
 
 class ProjectController extends Controller
 {
+    // Index Function
     public function index()
     {
         return view('projects.index')
             ->with('projects', Project::latest('published_date')->paginate(6)->withQueryString())
             ->with('categoryname', null);
     }
+
+    public function home()
+    {   
+        return view('welcome')
+            ->with('projects', Project::All()->take(4))
+            ->with('categoryname', null);
+
+    }
+    // Store Function
     public function store(Request $request)
     {
         $attributes = $request->validate([
@@ -62,18 +73,31 @@ class ProjectController extends Controller
         ->with('categoryname', $category->name);
         
     }
+    // List by Tag Function
+    public function listByTag(Tag $tag)
+    {
+        
+        return view('projects.index-tag')
+        ->with('projects', $tag->projects)
+        ->with('tagname', $tag->name);
+        
+    }
 
     //Create Function for Admin projects
     public function create() {
         return view('admin.projects.create')
         ->with('categories', Category::all())
-        ->with('project', null);
+        ->with('project', null)
+        ->with('tags', Tag::all());
+
+        $project->tags()->sync($request['tags']);
     }
     //Edit Function for Admin projects
     public function edit(Project $project) {
         return view('admin.projects.create')
         ->with('project', $project)
-        ->with('categories', Category::all());
+        ->with('categories', Category::all())
+        -> with('tags', Tag::all());
     }
     //Update Function for Admin projects
     public function update(Project $project, Request $request)
@@ -93,12 +117,14 @@ class ProjectController extends Controller
         
         // Save upload in public storage and set path attributes 
         $image_path = request()->file('image')?->storeAs('images',$request->image->getClientOriginalName(), 'public');
+        $attributes['image'] = $image_path;
         $thumb_path = request()->file('thumb')?->storeAs('images', $request->thumb->getClientOriginalName(), 'public');
         $attributes['thumb'] = $thumb_path;
 
         $attributes['slug'] = Str::slug($attributes['title']);
         
         $project->update($attributes);
+        $project->tags()->sync($request['tags']);
 
         session()->flash('success', 'Project updated successfully.');
 
@@ -115,5 +141,11 @@ class ProjectController extends Controller
         // Redirect to the Admin Dashboard
         return redirect('/admin');
     }
-    
+    // JSON Function for Admin projects
+    public function getProjectsJSON()
+    {
+        $projects = Project::with(['category','tags'])->get();
+        return response()->json($projects);
+    }
+
 }
