@@ -3,8 +3,8 @@
 <x-layout>
     <x-slot name="content">
         <div class=" justify-center text-center	 ">
-        @if ($categoryname)
-            <h2 class="text-3xl">{{$categoryname}} </h2>
+        @if ($tagname)
+            <h2 class="text-3xl">{{$tagname}} </h2>
             <br />
             <a href="/projects">← Back to Projects </a>
             
@@ -19,11 +19,7 @@
                     <x-projects.project-card :project="$project" :showImage="true" :showBannerImage="false" :showExcerpt="true" />
             @endforeach
         </section>
-        @if (count($projects))
-                    <div class="text-xs mt-4 w-full text-right">{{ $projects->links() }}</div>
-            @else
-                    <div>Nothing to showcase, yet.</div>
-        @endif
+
     </div>
 </div>
     </x-slot>
