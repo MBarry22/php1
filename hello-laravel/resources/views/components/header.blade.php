@@ -15,6 +15,7 @@
                 @endif
             @else
                 <a href="/login" class="ml-3 text-xs font-bold uppercase">Log In</a>
+                <a href="/register" class="ml-3 text-xs font-bold uppercase">Register</a>
             @endauth
         </div>
     </nav>

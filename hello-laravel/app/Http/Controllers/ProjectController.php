@@ -35,8 +35,8 @@ class ProjectController extends Controller
             'url' => ['nullable','sometimes','url'],
             'published_date' => ['nullable','sometimes','date'],
             'category_id' => ['required', 'sometimes','exists:categories,id'],
-            'image' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:max_width=1200'],
-            'thumb' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:1024','dimensions:max_width=600'],
+            'image' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:max_width=1920'],
+            'thumb' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:1920','dimensions:max_width=1920'],
         ]);
         
         
@@ -109,8 +109,8 @@ class ProjectController extends Controller
             'url' => ['nullable','sometimes','url'],
             'published_date' => ['nullable','sometimes','date'],
             'category_id' => ['nullable','sometimes','exists:categories,id'],
-            'image' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:max_width=1200'],
-            'thumb' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:1024','dimensions:max_width=600'],
+            'image' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:max_width=1920'],
+            'thumb' => ['nullable','sometimes','image','mimes:jpg,png,jpeg,gif,svg','max:1920','dimensions:max_width=1920'],
         ]);
 
         

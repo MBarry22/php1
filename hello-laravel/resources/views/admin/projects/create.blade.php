@@ -95,6 +95,7 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <!-- CTRL + CLICK FOR SELECTING MULTIPLE TAGS -->
                     <label for="tags" class="block mb-2 font-semibold text-gray-800">Tags:</label>
                     <select name="tags[]" id="tags" multiple="multiple" class="w-full px-3 py-2 border rounded-lg shadow-sm">
                         @foreach ($tags as $tag)
@@ -109,7 +110,7 @@
                 </div>
 
                     <div class="flex justify-center">
-                        <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Create</button>
+                        <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Submit</button>
                     </div>
                 </form>
             </div>

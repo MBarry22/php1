@@ -1,6 +1,6 @@
 @props(['project', 'showBody' => false, 'showImage' => false, 'showBannerImage' => true, 'showExcerpt' => false])
 
-<div class="p-4 bg-white overflow-hidden shadow-sm sm:rounded-lg w-4/6 mx-auto my-10">
+<div class="p-4 bg-white overflow-hidden shadow-2xl sm:rounded-lg w-4/6 mx-auto my-10">
     <div class="text-xl font-bold flex justify-between items-center">
         <a href="/projects/{{ $project->slug }}">{{ $project->title }}</a>
         @if ($showImage)
